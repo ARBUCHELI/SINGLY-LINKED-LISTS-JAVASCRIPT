@@ -17,15 +17,23 @@ class LinkedList {
 
   addToTail(data) {
     let tail = this.head;
-    if (tail === null) {
+    if (!tail) {
       this.head = new Node(data);
-    }
-    else {
-      while(tail.getNextNode() !== null) {
+    } else {
+      while (tail.getNextNode() !== null) {
         tail = tail.getNextNode();
       }
-      tail.setNextNode(new Node(data))
+      tail.setNextNode(new Node(data));
     }
+  }
+
+  removeHead() {
+    const removedHead = this.head;
+    if(!removedHead) {
+      return
+    }
+    this.head = removedHead.getNextNode();
+    return removedHead.data;
   }
 
 }
